@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>币币交易</title>
+    <link href="/css/exchange.css" rel="stylesheet">
+    <script src="/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="/js/lib/jquery.url.js"></script>
+    <script src="/js/transaction.js"></script>
+</head>
+
+<body>
+    <div id="nav"></div>
+    <script>
+        $("#nav").load("./html/nav.html");
+    </script>
+
+    <div id="main">
+        <h2>
+            <%= name %>
+                <%= symbol %>　对
+                    <%= replacename%>
+                        <%= replacesymbol%>
+        </h2>
+        <div>
+            <form class="transaction-buy-form row">
+                <div>
+                    <span>我的余额
+                        <%= replaceAvailBalacne %>
+                            <%= replacesymbol %>
+                    </span>
+                </div>
+                <div>
+                    <span>委托价格</span>
+                    <input type="text" name="price">
+                </div>
+                <div>
+                    <span>委托数量</span>
+                    <input type="text" name="count">
+                </div>
+                <input type="hidden" name="tokenid" value="<%= tokenid %>">
+                <input type="hidden" name="replacetokentype" value="<%= replacetokentype %>">
+                <input type="hidden" name="type" value="1">
+                <button type="submit" id="transaction-commit-btn">买入</button>
+            </form>
+
+            <form class="transaction-sell-form row">
+                <div>
+                    <span>我的余额
+                        <%= availBalance %>
+                            <%= symbol %>
+                    </span>
+                </div>
+                <div>
+                    <span>委托价格</span>
+                    <input type="text" name="price">
+                </div>
+                <div>
+                    <span>委托数量</span>
+                    <input type="text" name="count">
+                </div>
+                <input type="hidden" name="tokenid" value="<%= tokenid %>">
+                <input type="hidden" name="replacetokentype" value="<%= replacetokentype %>">
+                <input type="hidden" name="type" value="2">
+                <button type="submit" id="transaction-commit-btn">卖出</button>
+            </form>
+
+            <div id="register-list" class="row">
+                <div>
+                    <span>最新价</span>
+                    <span id="transaction-price"></span>
+                </div>
+                <ul>
+                    <li>
+                        <span>挡位</span>
+                        <span>价格</span>
+                        <span>数量</span>
+                    </li>
+                </ul>
+                <ul class="sell"></ul>
+                <ul class="buy"></ul>
+            </div>
+        </div>
+
+        <div>
+            <ul id="current-entrust-list" class="row vertop">
+                <div>当前委托</div>
+                <li>
+                    <span>日期</span>
+                    <span>类型</span>
+                    <span>价格</span>
+                    <span>挂单量</span>
+                </li>
+            </ul>
+            <ul id="order-list" class="row vertop">
+                <div>成交记录</div>
+                <li>
+                    <span>日期</span>
+                    <span>类型</span>
+                    <span>价格</span>
+                    <span>成交量</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

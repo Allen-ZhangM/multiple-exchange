@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>充值</title>
+    <link href="/css/exchange.css" rel="stylesheet">
+    <script src="/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="/js/lib/jquery.url.js"></script>
+</head>
+
+<body>
+    <div id="nav"></div>
+    <script>
+        $("#nav").load("./html/nav.html");
+    </script>
+
+    <div id="main">
+        <h1>
+            <%= name %>（
+                <%= symbol %>）充值</h1>
+        <p>请将
+            <%= symbol %>汇入如下地址</p>
+        <pre><%= address %></pre>
+
+        <h1>充值记录</h1>
+        <table class="table-full" <thead>
+            <tr>
+                <td>单号</td>
+                <td>时间</td>
+                <td>充值金额</td>
+            </tr>
+            </thead>
+            <tbody>
+                <% list.forEach(function(order){ %>
+                    <tr>
+                        <td>
+                            <%= order.id %>
+                        </td>
+                        <td>
+                            <%= order.createtime %>
+                        </td>
+                        <td>
+                            <%= order.count %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

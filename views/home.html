@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+
+    <script src="/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="/js/lib/jquery.url.js"></script>
+    <link href="/css/exchange.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="nav"></div>
+    <script>
+        $("#nav").load("./html/nav.html");
+    </script>
+
+    <div id="main">
+
+        <ul id="home-token-list">
+            <% list.forEach(function(token){ %>
+                <li>
+                    <span>
+                        <b><%= token.symbol %></b> <%= token.name %>
+                    </span>
+                    <span class="price">
+                        <%= token.price %>
+                    </span>
+                    <button><a href=<%= "/transaction.html?tokenid=" + token.id + "&replacetokentype=1" %>>去交易</a></button>
+                </li>
+                <% }) %>
+        </ul>
+    </div>
+
+</body>
+
+</html>
